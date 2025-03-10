@@ -47,16 +47,16 @@ export default function CustomDialog({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-6 text-left align-middle shadow-xl transition-all">
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900"
+                  className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200"
                 >
                   {title}
                 </Dialog.Title>
                 <div className="mt-2">{children}</div>
 
-                <div className="mt-4 flex gap-2 items-center justify-end">
+                <div className="mt-4 flex gap-2 items-center justify-end px-4">
                   {onConfirm && (
                     <button
                       type="button"

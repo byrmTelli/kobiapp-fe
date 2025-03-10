@@ -1,20 +1,6 @@
 import Button from "../../../components/Buttons/Button/Button";
 import ProductCard from "./ProductCard/ProductCard";
 
-interface Product {
-  label: string;
-  name: string;
-  price: number;
-  hasDiscount: boolean;
-  discountPrice: number;
-  image: string;
-  description: string;
-  category: string;
-  subCategory: string;
-  cargoFree: boolean;
-  isNew: boolean;
-}
-
 export default function ProductDisplay() {
   return (
     <div

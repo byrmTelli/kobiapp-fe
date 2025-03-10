@@ -3,7 +3,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 export default function MainFooter() {
   return (
-    <div className="flex flex-row gap-10 py-10 justify-center border-t border-gray-300 dark:border-gray-700 w-full">
+    <div className="flex flex-row gap-10 py-10 justify-center border-t border-gray-300 dark:border-gray-700 w-full z-10 bg-white dark:bg-gray-900">
       <div className="">
         <h1 className="font-bold mb-2 border-b border-gray-300 dark:border-gray-700 w-full pb-1">
           Adress

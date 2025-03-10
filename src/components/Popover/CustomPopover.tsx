@@ -36,6 +36,7 @@ export default function CustomPopover({ mainItem, subItems }: PopoverProps) {
                     title={item?.title}
                     icon={item?.icon}
                     className="px-4 py-2"
+                    path={item?.path}
                   />
                 ))}
               </div>

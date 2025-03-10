@@ -40,7 +40,7 @@ function Input(
           className={classNames(
             "self-start block my-2 text-sm font-medium w-full truncate",
             {
-              "text-gray-900": isInvalid === false,
+              "text-gray-900 dark:text-white": isInvalid === false,
               "text-red-700 dark:text-red-500": isInvalid,
             }
           )}
@@ -54,9 +54,9 @@ function Input(
             classNames(
               "h-10 w-full sm:text-sm rounded-lg p-2.5 outline-none flex items-center justify-center gap-3",
               {
-                "bg-gray-50 border border-gray-400 text-gray-900 focus:ring-cyan-600 focus:border-cyan-600":
+                "bg-gray-50 border border-gray-400 text-gray-900 focus:ring-cyan-600 focus:border-cyan-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-cyan-600 dark:focus:border-cyan-600":
                   isInvalid === false,
-                "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500":
+                "bg-red-50 border dark:bg-gray-700 border-red-500 text-red-900 placeholder-red-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500":
                   isInvalid,
               }
             ),
@@ -68,11 +68,13 @@ function Input(
             {...inputProps}
             type={inputType}
             disabled={disabled}
-            className={"outline-none w-[90%]"}
+            className={
+              "outline-none w-[90%] dark:text-white dark:placeholder-gray-400"
+            }
           />
           <MdRemoveRedEye
             onClick={handleShowHiddenPasswordEyeClick}
-            className="text-xl text-gray-500 cursor-pointer"
+            className="text-xl text-gray-500 cursor-pointer dark:text-gray-400"
           />
         </div>
       ) : (
@@ -85,7 +87,7 @@ function Input(
             classNames(
               "h-10 sm:text-sm rounded-lg block w-full p-2.5 outline-none",
               {
-                "bg-gray-50 border border-gray-400 text-gray-900 focus:ring-cyan-600 focus:border-cyan-600":
+                "bg-gray-50 border border-gray-400 text-gray-900 focus:ring-cyan-600 focus:border-cyan-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-cyan-600 dark:focus:border-cyan-600":
                   isInvalid === false,
                 "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500":
                   isInvalid,
