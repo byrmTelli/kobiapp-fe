@@ -3,6 +3,7 @@ interface SubPage {
   path: string;
   breadCrumb: string;
   element: React.ReactNode;
+  isProtected?: boolean;
 }
 
 interface Page {

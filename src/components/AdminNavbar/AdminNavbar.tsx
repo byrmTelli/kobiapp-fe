@@ -3,13 +3,31 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import ThemeToggleButton from "../Buttons/ThemeToggleButton/ThemeToggleButton";
 import CustomPopover from "../Popover/CustomPopover";
 import { IoMdChatbubbles, IoMdSettings } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/slices/authSlice";
 
 export default function AdminNavbar() {
+  // States
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // Handlers
+  const handleLogoutButtonClick = () => {
+    dispatch(logout());
+    navigate("/");
+  };
+
   return (
-    <div className="w-full flex items-center justify-between dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-10 py-4">
-      <div className="">
-        <h1 className="text-2xl font-bold">Admin Panel</h1>
+    <div className="w-full sticky top-0 z-50 bg-white flex items-center justify-between dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-10 py-4">
+      <div className="flex items-center gap-4 justify-center select-none">
+        <div className="">
+          <FaBars className="text-2xl" />
+        </div>
+        <div className="">
+          <h1 className="text-2xl font-bold">Admin Panel</h1>
+        </div>
       </div>
       <div className="">
         <Link to="/">
@@ -48,6 +66,11 @@ export default function AdminNavbar() {
                 icon: <IoMdSettings />,
               },
               {
+                title: "Kullanıcılar",
+                icon: <IoMdChatbubbles />,
+                path: "/admin/user-management",
+              },
+              {
                 title: "Messages",
                 icon: <IoMdChatbubbles />,
               },
@@ -55,7 +78,10 @@ export default function AdminNavbar() {
           />
         </div>
 
-        <button className="text-gray-800 dark:text-gray-200 bg-gray-200  p-2 rounded-full hover:text-gray-500 dark:hover:text-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-500">
+        <button
+          onClick={() => handleLogoutButtonClick()}
+          className="text-gray-800 dark:text-gray-200 bg-gray-200  p-2 rounded-full hover:text-gray-500 dark:hover:text-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-500"
+        >
           <RiLogoutBoxRLine className="text-xl" />
         </button>
       </div>

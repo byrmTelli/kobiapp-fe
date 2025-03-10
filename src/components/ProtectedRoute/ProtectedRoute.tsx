@@ -19,7 +19,6 @@ export default function ProtectedRoute({
 
   // Effects
   useEffect(() => {
-    // Auth durumu kontrol edilene kadar loading göster
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 500);
@@ -32,7 +31,7 @@ export default function ProtectedRoute({
   }
 
   if (isProtected && !auth.isAuthenticated) {
-    return <Navigate to="/auth/login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return <>{children}</>;

@@ -44,7 +44,7 @@ function Select<T>(
       {label && (
         <label
           className={classNames(
-            "self-start block mb-2 text-sm font-medium w-full truncate",
+            "self-start block mb-2 text-sm font-medium w-full truncate dark:text-gray-200 pl-1",
             {
               "text-gray-900": isInvalid === false,
               "text-red-700 dark:text-red-500": isInvalid,
@@ -60,7 +60,7 @@ function Select<T>(
         value={selectValue}
         onChange={handleSelectChange}
         className={classNames(" sm:text-sm rounded-lg block w-full p-2.5", {
-          "bg-gray-50 border border-gray-400 text-gray-900 focus:ring-cyan-600 focus:border-cyan-600 outline-none":
+          "bg-gray-50 border border-gray-400 text-gray-900 focus:ring-cyan-600 focus:border-cyan-600 outline-none dark:text-gray-200 dark:bg-gray-700 dark:border-gray-900":
             isInvalid === false,
           "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-600 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500":
             isInvalid,
