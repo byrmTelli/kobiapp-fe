@@ -7,7 +7,7 @@ export default function ProductDisplay() {
       id="servicesSection"
       className="flex flex-col py-10 items-center w-full text-gray-700 dark:text-gray-200 gap-4 "
     >
-      <h1 className="text-4xl font-bold">Products</h1>
+      <h1 className="text-4xl font-bold">Hizmetlerimiz</h1>
       <div className="grid grid-cols-2 w-5/6 mt-10">
         <div className="">
           <ProductCard />

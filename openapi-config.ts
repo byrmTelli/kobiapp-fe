@@ -16,7 +16,7 @@ const generateOutputFile = (name: string) => {
 };
 
 const config: ConfigFile = {
-  schemaFile: `https://localhost:7003/openapi/v1.json`,
+  schemaFile: `https://localhost:7003/swagger/v1/swagger.json`,
   apiFile: "./src/store/api/kobiApi.ts",
   apiImport: "kobiApi",
   outputFiles: {

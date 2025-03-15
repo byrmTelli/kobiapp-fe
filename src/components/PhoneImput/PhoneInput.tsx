@@ -4,6 +4,7 @@ import { Spinner } from "../Spinner";
 import { PhoneInputProps } from "./types";
 import { PatternFormat } from "react-number-format";
 import { twMerge } from "tailwind-merge";
+import { FaPhone } from "react-icons/fa6";
 
 function PhoneInput(
   {
@@ -40,7 +41,7 @@ function PhoneInput(
       )}
       <div
         className={twMerge(
-          classNames("h-10 w-full sm:text-sm rounded-lg p-2.5 outline-none", {
+          classNames("h-10 w-full sm:text-sm rounded-lg flex outline-none", {
             "bg-gray-50 border border-gray-400 text-gray-900 focus:ring-cyan-600 focus:border-cyan-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-cyan-600 dark:focus:border-cyan-600":
               isInvalid === false,
             "bg-red-50 border dark:bg-gray-700 border-red-500 text-red-900 placeholder-red-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500":
@@ -49,8 +50,13 @@ function PhoneInput(
           inputClassName
         )}
       >
-        <div className="flex items-center w-full">
-          <span className="text-gray-500 dark:text-gray-400">+90</span>
+        <div className="flex items-center gap-1 w-full">
+          <div className="flex items-center p-1 h-full bg-gray-100 w-10 justify-center rounded-l-lg dark:bg-gray-800 transition-colors duration-300">
+            <FaPhone className="text-gray-500 dark:text-gray-100 transition-colors duration-300" />
+          </div>
+          <span className="text-gray-500 dark:text-gray-400 transition-colors duration-300">
+            +90
+          </span>
           <PatternFormat
             format="(###) ### ## ##"
             mask="_"

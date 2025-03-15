@@ -31,7 +31,7 @@ function Textarea(
         {...textareaProps}
         className={twMerge(
           classNames(" sm:text-sm block w-full p-2.5 rounded-lg", {
-            "bg-gray-50 border border-gray-300 text-gray-900 focus:ring-cyan-600 focus:border-cyan-600":
+            "bg-gray-50 border dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 focus:ring-cyan-600 focus:border-cyan-600":
               isInvalid === false,
             "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500":
               isInvalid,

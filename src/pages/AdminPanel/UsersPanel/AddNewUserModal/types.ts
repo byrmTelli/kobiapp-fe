@@ -27,7 +27,7 @@ export const AddNewUserModalFormSchema = yup.object().shape({
     .required("Kullanıcı adı alanı zorunludur."),
   email: yup
     .string()
-    .email("Geçersiz email adresi.")
+    .email("Geçerli bir email giriniz.")
     .required("Email alanı zorunludur."),
   firstName: yup
     .string()
@@ -38,6 +38,7 @@ export const AddNewUserModalFormSchema = yup.object().shape({
   lastName: yup
     .string()
     .min(2, "Soyisim alanı en az iki karaterden oluşmalıdır.")
+    .max(20, "Soyisim alanı en fazla 20 karakter olmalıdır.")
     .matches(
       /^[a-zA-ZğüşıöçĞÜŞİÖÇ]+$/,
       "Soyisim sadece harflerden oluşmalıdır."

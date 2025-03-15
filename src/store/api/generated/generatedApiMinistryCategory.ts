@@ -52,32 +52,56 @@ const injectedRtkApi = api.injectEndpoints({
   overrideExisting: false,
 });
 export { injectedRtkApi as generatedMinistryCategory };
-export type GetApiMinistryCategoryGetAllCategoriesApiResponse = unknown;
+export type GetApiMinistryCategoryGetAllCategoriesApiResponse =
+  /** status 200 OK */ MinistryCategoryViewModelListIApiDataResponse;
 export type GetApiMinistryCategoryGetAllCategoriesApiArg = void;
 export type PostApiMinistryCategoryCreateNewMinistryCategoryApiResponse =
-  unknown;
+  /** status 200 OK */ IApiResponse;
 export type PostApiMinistryCategoryCreateNewMinistryCategoryApiArg = {
   createMinistryCategoryRequestModel: CreateMinistryCategoryRequestModel;
 };
-export type PostApiMinistryCategoryUpdateMinistryCategoryApiResponse = unknown;
+export type PostApiMinistryCategoryUpdateMinistryCategoryApiResponse =
+  /** status 200 OK */ IApiResponse;
 export type PostApiMinistryCategoryUpdateMinistryCategoryApiArg = {
   updateMinistryCategoryRequestModel: UpdateMinistryCategoryRequestModel;
 };
-export type GetApiMinistryCategoryGetMinistryCategoryByIdApiResponse = unknown;
+export type GetApiMinistryCategoryGetMinistryCategoryByIdApiResponse =
+  /** status 200 OK */ MinistryCategoryViewModelIApiDataResponse;
 export type GetApiMinistryCategoryGetMinistryCategoryByIdApiArg = {
   id?: number;
 };
 export type DeleteApiMinistryCategoryDeleteMinistryCategoryApiResponse =
-  unknown;
+  /** status 200 OK */ IApiResponse;
 export type DeleteApiMinistryCategoryDeleteMinistryCategoryApiArg = {
   deleteEntityRequestlModel: DeleteEntityRequestlModel;
 };
+export type MinistryCategoryViewModel = {
+  id?: number;
+  name?: string | null;
+};
+export type MinistryCategoryViewModelListIApiDataResponse = {
+  success?: boolean;
+  statusCode?: number;
+  message?: string | null;
+  data?: MinistryCategoryViewModel[] | null;
+};
+export type IApiResponse = {
+  success?: boolean;
+  statusCode?: number;
+  message?: string | null;
+};
 export type CreateMinistryCategoryRequestModel = {
-  name?: string;
+  name?: string | null;
 };
 export type UpdateMinistryCategoryRequestModel = {
   id?: number;
-  name?: string;
+  name?: string | null;
+};
+export type MinistryCategoryViewModelIApiDataResponse = {
+  success?: boolean;
+  statusCode?: number;
+  message?: string | null;
+  data?: MinistryCategoryViewModel;
 };
 export type DeleteEntityRequestlModel = {
   id?: number;

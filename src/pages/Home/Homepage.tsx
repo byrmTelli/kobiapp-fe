@@ -12,7 +12,7 @@ export default function Homepage() {
       <ScrollToTopButton />
       <CompanyHero />
       <ProductDisplay />
-      <Contact title="Contact Us" />
+      <Contact title="Bize Ulaşın" />
     </div>
   );
 }

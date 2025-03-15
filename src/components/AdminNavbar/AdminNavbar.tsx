@@ -32,7 +32,7 @@ export default function AdminNavbar() {
       <div className="">
         <Link to="/">
           <span className="text-gray-00 dark:text-gray-200 font-bold">
-            Website
+            Ana Sayfa
           </span>
         </Link>
       </div>

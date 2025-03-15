@@ -1,3 +1,4 @@
+import Breadcrum from "../../components/Breadcrum/Breadcrum";
 import Button from "../../components/Buttons/Button/Button";
 import SimpleTable from "../../components/SimpleTable/SimpleTable";
 
@@ -227,108 +228,10 @@ export const messages: Message[] = [
 export default function AdminPanel() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800">
-      <div className="w-full h-full grid grid-cols-2 gap-4 p-4">
-        <div className="fade-in w-full col-span-2 border bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-lg flex justify-between p-4 shadow-lg min-h-48 transition-colors duration-500">
-          <h1 className="text-lg font-bold text-gray-500 dark:text-gray-200">
-            Dashboard
-          </h1>
-          <div className="flex items-center gap-2"></div>
-        </div>
-        <div className="fade-in col-span-2 border border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700 transition-colors duration-500 rounded-lg p-4 shadow-lg min-h-96">
-          <SimpleTable
-            title="Messages"
-            columns={[
-              { header: "Name", accessorFn: (cell) => cell.name },
-              { header: "Email", accessorFn: (cell) => cell.email },
-              {
-                header: "Created At",
-                accessorFn: (cell) => cell.createdAt,
-              },
-              {
-                header: "Actions",
-                cell: () => (
-                  <div className="flex items-center gap-2">
-                    <Button
-                      title="Inspect"
-                      className="border border-gray-300 dark:border-gray-700 hover:bg-gray-200"
-                      size="sm"
-                    />
-                    <Button title="Delete" varient="danger" size="sm" />
-                  </div>
-                ),
-              },
-            ]}
-            data={messages}
-          />
-        </div>
-        <div className="fade-in col-span-2 border flex flex-col gap-4 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 transition-colors duration-500 rounded-lg p-4 shadow-lg min-h-96">
-          <div className="w-full">
-            <SimpleTable
-              title="Products"
-              columns={[
-                { header: "Name", accessorFn: (cell) => cell.name },
-                {
-                  header: "Description",
-                  accessorFn: (cell) => cell.description,
-                },
-                {
-                  header: "Category",
-                  accessorFn: (cell) => cell.category,
-                },
-                {
-                  header: "Price",
-                  accessorFn: (cell) => cell.price,
-                },
-                {
-                  header: "Created At",
-                  accessorFn: (cell) => cell.createdAt,
-                },
-                {
-                  header: "Actions",
-                  cell: () => (
-                    <div className="flex items-center gap-2">
-                      <Button title="Edit" varient="amber" size="sm" />
-                      <Button title="Delete" varient="danger" size="sm" />
-                    </div>
-                  ),
-                },
-              ]}
-              data={products}
-            />
-          </div>
-        </div>
-        <div className="fade-in col-span-2 border flex flex-col gap-4 border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700 transition-colors duration-500 rounded-lg p-4 shadow-lg min-h-96">
-          <div className="w-full">
-            <SimpleTable
-              title="Categories"
-              columns={[
-                { header: "Name", accessorFn: (cell) => cell.name },
-                {
-                  header: "Description",
-                  accessorFn: (cell) => cell.description,
-                },
-                {
-                  header: "Created At",
-                  accessorFn: (cell) => cell.createdAt,
-                },
-                {
-                  header: "Updated At",
-                  accessorFn: (cell) => cell.updatedAt,
-                },
-                {
-                  header: "Actions",
-                  cell: () => (
-                    <div className="flex items-center gap-2">
-                      <Button title="Edit" varient="amber" size="sm" />
-                      <Button title="Delete" varient="danger" size="sm" />
-                    </div>
-                  ),
-                },
-              ]}
-              data={categories}
-            />
-          </div>
-        </div>
+      <div className="w-full h-full grid grid-cols-2 gap-4">
+        <Breadcrum />
+
+        <div className="min-h-screen w-full"></div>
       </div>
     </div>
   );
