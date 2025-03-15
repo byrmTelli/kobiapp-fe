@@ -11,7 +11,7 @@ export default function AboutUsPage({ title }: PageSectionProps) {
       <h1 className="text-4xl font-bold">{title}</h1>
       <div className="w-5/6 mt-10">
         <div className="grid grid-cols-2 gap-4 rounded-lg shadow-xl p-4 border border-gray-300 dark:border-gray-700">
-          <div className="">
+          <div className="min-h-[700px]">
             <img
               src={mapImage}
               alt="map"

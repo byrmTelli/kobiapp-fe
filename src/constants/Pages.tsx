@@ -6,11 +6,15 @@ import { Page } from "./types";
 import LoginPage from "../pages/AdminPanel/LoginPage/LoginPage";
 import BlankLayout from "../layouts/BlankLayout/BlankLayout";
 import UsersPanel from "../pages/AdminPanel/UsersPanel/UsersPanel";
+import MinistriesPanelPage from "../pages/AdminPanel/MinistriesPanel/MinistriesPanelPage";
+import CategoriesPanelPage from "../pages/AdminPanel/CategoriesPanel/CategoriesPanelPage";
+import MessagesPage from "../pages/AdminPanel/MessagesPanel/MessagesPage";
 
 export const pages: Page[] = [
   {
     rootPath: "/",
     layout: <MainLayout />,
+    title: "Ana Sayfa",
     subPages: [
       {
         title: "Home",
@@ -23,20 +27,42 @@ export const pages: Page[] = [
   {
     rootPath: "/admin",
     layout: <AdminLayout />,
+    title: "Admin Panel",
     isProtected: true,
     subPages: [
       {
-        title: "Admin Panel",
+        title: "Yönetim Paneli",
         path: "management",
         breadCrumb: "Admin Panel",
         element: <AdminPanel />,
         isProtected: true,
       },
       {
-        title: "Kullanıcı Yönetim Paneli",
+        title: "Kullanıcılar Paneli",
         path: "users",
         breadCrumb: "Kullanıcı Yönetim Paneli",
         element: <UsersPanel />,
+        isProtected: true,
+      },
+      {
+        title: "Hizmetler Paneli",
+        path: "ministries",
+        breadCrumb: "Hizmetler",
+        element: <MinistriesPanelPage />,
+        isProtected: true,
+      },
+      {
+        title: "Kategoriler Paneli",
+        path: "categories",
+        breadCrumb: "Kategoriler",
+        element: <CategoriesPanelPage />,
+        isProtected: true,
+      },
+      {
+        title: "Mesajlar Paneli",
+        path: "messages",
+        breadCrumb: "Mesajlar",
+        element: <MessagesPage />,
         isProtected: true,
       },
     ],
@@ -44,9 +70,10 @@ export const pages: Page[] = [
   {
     rootPath: "/auth",
     layout: <BlankLayout />,
+    title: "Giriş Paneli",
     subPages: [
       {
-        title: "Login",
+        title: "Giriş Yap",
         path: "login",
         breadCrumb: "Login",
         element: <LoginPage />,

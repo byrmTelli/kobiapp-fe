@@ -35,15 +35,15 @@ export default function AssignRoleToUserModal({
     resolver: yupResolver(AssignroleToUserFormScheme),
   });
 
-  console.log(form.control._formValues);
   // Handlers
   const handleAssignRoleToUserSubmitButtonClick = () => {
-    console.log(form.getValues());
     const f = form.getValues();
 
     assignRoleToUserRequest({
-      userId: f.userId,
-      roleId: f.role.id as number,
+      assignRoleToUserRequestModel: {
+        userId: f.userId,
+        roleId: f.role.id as number,
+      },
     })
       .unwrap()
       .then((res) => {

@@ -11,6 +11,7 @@ interface Page {
   rootPath: string;
   subPages?: SubPage[];
   layout: React.ReactNode;
+  title: string;
 }
 
 export type { Page, SubPage };

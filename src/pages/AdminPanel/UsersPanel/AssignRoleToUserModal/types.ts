@@ -15,8 +15,11 @@ interface AssignRoleToUserFormModel {
 }
 
 export const AssignroleToUserFormScheme = yup.object().shape({
-  userId: yup.number().required(),
-  role: yup.object().required(),
+  userId: yup
+    .number()
+    .min(1, "Kullanıcı seçimi yapınız.")
+    .required("Kullanıcı seçimi yapınız."),
+  role: yup.object().required("Role seçimi yapınız."),
 });
 
 export type {

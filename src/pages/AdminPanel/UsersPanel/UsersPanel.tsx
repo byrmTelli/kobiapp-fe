@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import PasswordChangeModal from "./UserPasswordChangeModal/PasswordChangeModal";
 import UpdateUserProfileModal from "./UpdateUserProfileModal/UpdateUserProfileModal";
 import AssignRoleToUserModal from "./AssignRoleToUserModal/AssignRoleToUserModal";
+import Breadcrum from "../../../components/Breadcrum/Breadcrum";
 export default function UsersPanel() {
   // States
   const [isAddNewUserModalOpen, setIsAddNewUserModalOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function UsersPanel() {
     };
 
   return (
-    <div className="w-full min-h-screen p-4">
+    <div className="w-full min-h-screen">
       {isAddNewUserModalOpen && (
         <AddNewUserModal
           isOpen={isAddNewUserModalOpen}
@@ -80,12 +81,8 @@ export default function UsersPanel() {
           onClose={() => setIsAssignRoleToUserModalOpen(false)}
         />
       )}
-      <div className="grid grid-cols-4 gap-4">
-        <div className="col-span-2">
-          <h1 className="text-2xl font-bold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-            Kullanıcı Yönetimi
-          </h1>
-        </div>
+      <Breadcrum />
+      <div className="grid grid-cols-4 gap-4 p-8">
         <UsersPanelTopDashboard
           users={usersList}
           addUserButtonHandler={() => setIsAddNewUserModalOpen(true)}
@@ -98,8 +95,20 @@ export default function UsersPanel() {
               </h1>
             </div>
           </div>
+          <div className="w-full flex items-center gap-2">
+            <Button
+              onClick={() => setIsUpdateUserProfileModalOpen(true)}
+              title="Profilini Düzenle"
+              size="sm"
+            />
+            <Button
+              onClick={() => setIsPasswordChangeModalOpen(true)}
+              title="Şifreni Değiştir"
+              size="sm"
+            />
+          </div>
           <div className="grid w-full h-full gap-2 px-4 pt-8">
-            <div className="w-full h-full  flex flex-col gap-1">
+            <div className="w-full h-full flex flex-col gap-1">
               <p>
                 <span className="text-gray-500 text-sm font-semibold">
                   Kullanıcı Adı:
@@ -125,27 +134,13 @@ export default function UsersPanel() {
                 <span>{user?.phoneNumber}</span>
               </p>
             </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setIsUpdateUserProfileModalOpen(true)}
-                className="bg-green-600 text-white px-4 py-2 rounded-md text-sm"
-              >
-                Profilini Düzenle
-              </button>
-              <button
-                onClick={() => setIsPasswordChangeModalOpen(true)}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm"
-              >
-                Şifreni Değiştir
-              </button>
-            </div>
           </div>
         </div>
         <div className="fade-in col-span-4 border border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700 transition-colors duration-500 rounded-lg p-4 shadow-lg min-h-96">
           <SimpleTable
             title="Kullanıcılar"
             columns={[
-              { header: "Id", accessorFn: (cell) => cell.id },
+              { header: "No", cell: (cell) => cell.row.index + 1 },
               { header: "Email", accessorFn: (cell) => cell.email },
               { header: "Kullanıcı Adı", accessorFn: (cell) => cell.username },
               { header: "Adı Soyadı", accessorFn: (cell) => cell.fullname },
@@ -160,6 +155,7 @@ export default function UsersPanel() {
                     <Button
                       title="İncele"
                       className="border border-gray-300 dark:border-gray-700 hover:bg-gray-200"
+                      varient="amber"
                       size="sm"
                       onClick={handleInspectUserButtonClick(cell.row.original)}
                     />
@@ -167,6 +163,7 @@ export default function UsersPanel() {
                       title="Rol Değiştir"
                       className="border border-gray-300 dark:border-gray-700 hover:bg-gray-200"
                       size="sm"
+                      varient="success"
                       onClick={handleAssignRoleToUserButtonClick(
                         cell.row.original
                       )}

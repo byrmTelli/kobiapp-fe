@@ -6,7 +6,8 @@ import {
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
-import { logout } from "../slices/authSlice";
+import { logout, setUser } from "../slices/authSlice";
+import { IApiDataResponseOfUserLoginViewModel } from "./generated/generatedApiAuth";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_APP_BASE_URL,
@@ -15,12 +16,16 @@ const baseQuery = fetchBaseQuery({
     const token = state.auth.user?.accessToken;
     const isAuthenticated = state.auth.isAuthenticated;
 
+    headers.set("Content-Type", "application/json");
+    headers.set("Access-Control-Allow-Credentials", "true");
+
     if (token !== "" && isAuthenticated) {
       headers.set("Authorization", `Bearer ${token}`);
     }
 
     return headers;
   },
+  credentials: "include",
 });
 
 const baseQueryWithReauth: BaseQueryFn<
@@ -28,12 +33,28 @@ const baseQueryWithReauth: BaseQueryFn<
   unknown,
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-  const result = await baseQuery(args, api, extraOptions);
+  let result = await baseQuery(args, api, extraOptions);
 
-  const hasUserAccessToken = false;
-  const shouldUserLogout = result.error && result.error?.status === 401;
-  if (shouldUserLogout || hasUserAccessToken) {
-    api.dispatch(logout());
+  if (result.error && result.error.status === 401) {
+    const refreshResult = await baseQuery(
+      {
+        url: "/api/auth/RefreshUsersProfile",
+        method: "POST",
+      },
+      api,
+      extraOptions
+    );
+
+    if (refreshResult.data) {
+      const refreshData =
+        refreshResult.data as IApiDataResponseOfUserLoginViewModel;
+
+      api.dispatch(setUser(refreshData.data));
+
+      result = await baseQuery(args, api, extraOptions);
+    } else {
+      api.dispatch(logout());
+    }
   }
 
   return result;

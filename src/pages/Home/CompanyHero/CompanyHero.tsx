@@ -21,7 +21,7 @@ export default function CompanyHero() {
             <Button
               title="Search"
               varient="amber"
-              className="min-w-48 font-bold"
+              className="min-w-48 font-bold h-full"
               size="lg"
             />
           </div>

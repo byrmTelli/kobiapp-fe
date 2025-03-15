@@ -11,7 +11,7 @@ export default function SidemenuItem({ path, label, icon }: SidemenuItemProps) {
   return (
     <div
       onClick={handleSideMenuItemClick(path)}
-      className="text-gray-700 dark:text-gray-200 font-semibold text-sm pl-2 py-1 flex items-center gap-2 cursor-pointer"
+      className="text-gray-700 dark:text-gray-200 font-semibold text-sm pl-2 py-1 flex items-center gap-2 cursor-pointer  select-none"
     >
       {icon}
       <span>{label}</span>

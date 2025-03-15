@@ -9,7 +9,6 @@ export default function PopoverSubItem({
 }: PopoverSubItemProps) {
   // States
   const navigate = useNavigate();
-  console.log(path);
   // Handlers
   const handleSubItemClick = (path: string) => () => {
     navigate(path);
