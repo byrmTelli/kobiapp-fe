@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/slices/authSlice";
+import { toggleAdminPanelSideMenu } from "../../store/slices/appSlice";
 
 export default function AdminNavbar() {
   // States
@@ -19,10 +20,14 @@ export default function AdminNavbar() {
     navigate("/");
   };
 
+  const handleSideMenuToggleButtonClick = () => {
+    dispatch(toggleAdminPanelSideMenu());
+  };
+
   return (
     <div className="w-full sticky top-0 z-50 bg-white flex items-center justify-between dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-10 py-4">
       <div className="flex items-center gap-4 justify-center select-none">
-        <div className="">
+        <div onClick={handleSideMenuToggleButtonClick} className="">
           <FaBars className="text-2xl" />
         </div>
         <div className="">

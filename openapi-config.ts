@@ -20,6 +20,7 @@ const config: ConfigFile = {
   apiFile: "./src/store/api/kobiApi.ts",
   apiImport: "kobiApi",
   outputFiles: {
+    ...generateOutputFile("Home"),
     ...generateOutputFile("Auth"),
     ...generateOutputFile("Manager"),
     ...generateOutputFile("MinistryCategory"),

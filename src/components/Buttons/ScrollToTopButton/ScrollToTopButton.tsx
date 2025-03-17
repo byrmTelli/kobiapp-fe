@@ -4,7 +4,6 @@ import { FaArrowUp } from "react-icons/fa";
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Scroll event listener'ı ekleyelim
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
@@ -18,7 +17,6 @@ export default function ScrollToTopButton() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  // Sayfanın en üstüne gitme fonksiyonu
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -29,7 +27,7 @@ export default function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-6 p-5 bg-amber-300 text-white rounded-full shadow-lg transition-opacity duration-500 ${
+      className={`fixed bottom-6 right-6 p-5 z-20 bg-amber-300 text-white rounded-full shadow-lg transition-opacity duration-500 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >

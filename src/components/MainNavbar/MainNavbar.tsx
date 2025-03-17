@@ -9,6 +9,7 @@ export default function MainNavbar() {
   // States
   const navigate = useNavigate();
   const auth = useSelector((state: RootState) => state.auth);
+  const company = useSelector((state: RootState) => state.company);
   return (
     <div className="w-full flex-flex-col items-center justify-center">
       <div className="w-full flex items-center justify-end border-gray-300 gap-4 text-gray-700 py-4 px-10 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 border-b transition-colors duration-500">
@@ -37,15 +38,15 @@ export default function MainNavbar() {
         )}
         <div className="flex items-center justify-center gap-4">
           <MdAlternateEmail />
-          <p>customcompany@mail.com</p>
+          <p>{company.email}</p>
         </div>
         <div className="flex items-center justify-center gap-4">
           <FaPhoneVolume />
-          <p>+90 555 444 33 22 </p>
+          <p>+90 {company.phone} </p>
         </div>
       </div>
       <div className="flex flex-row items-center text-gray-700 dark:bg-gray-900 dark:text-gray-200 justify-between px-10 h-24  w-full transition-colors duration-500">
-        <div className="text-2xl font-bold">Bayram T.</div>
+        <div className="text-2xl font-bold cursor-pointer">{company.name}</div>
         <div className="flex items-center gap-4 justify-center">
           <div className="font-bold cursor-pointer">
             <a href="#heroSection">Ana Sayfa</a>

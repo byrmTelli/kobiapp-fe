@@ -7,7 +7,7 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { logout, setUser } from "../slices/authSlice";
-import { IApiDataResponseOfUserLoginViewModel } from "./generated/generatedApiAuth";
+import { UserLoginViewModelIApiDataResponse } from "./generated/generatedApiAuth";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_APP_BASE_URL,
@@ -16,7 +16,6 @@ const baseQuery = fetchBaseQuery({
     const token = state.auth.user?.accessToken;
     const isAuthenticated = state.auth.isAuthenticated;
 
-    headers.set("Content-Type", "application/json");
     headers.set("Access-Control-Allow-Credentials", "true");
 
     if (token !== "" && isAuthenticated) {
@@ -47,7 +46,7 @@ const baseQueryWithReauth: BaseQueryFn<
 
     if (refreshResult.data) {
       const refreshData =
-        refreshResult.data as IApiDataResponseOfUserLoginViewModel;
+        refreshResult.data as UserLoginViewModelIApiDataResponse;
 
       api.dispatch(setUser(refreshData.data));
 

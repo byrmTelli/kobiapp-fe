@@ -26,8 +26,8 @@ export default function UpdateMinistryModal({
   const form = useForm<UpdateMinistyFormModel>({
     defaultValues: {
       id: user?.id,
-      title: selectedMinistry?.title,
-      description: selectedMinistry?.description,
+      title: selectedMinistry?.title ?? "",
+      description: selectedMinistry?.description ?? "",
       category: selectedMinistry?.category,
     },
     resolver: yupResolver(UpdateMinistryFormModelScheme),

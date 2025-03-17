@@ -7,15 +7,20 @@ import { apiManager } from "./api/enhanced/enhancedApiManager";
 import { apiMinistryCategory } from "./api/enhanced/enhancedApiMinistryCategory";
 import { apiMinistry } from "./api/enhanced/enhancedApiMinistry";
 import { kobiApi } from "./api/kobiApi";
+import { companySlice } from "./slices/companySlice";
+import { extentedMinistryApi } from "./api/extended/extendedMinistryApi";
+import { appSlice } from "./slices/appSlice";
 
 const persistConfig = {
   key: "root",
   storage: storageSession,
-  whitelist: ["auth"],
+  whitelist: ["auth", "company", "app"],
 };
 
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
+  company: companySlice.reducer,
+  app: appSlice.reducer,
   [kobiApi.reducerPath]: kobiApi.reducer,
 });
 
@@ -26,6 +31,7 @@ const middlewares: Middleware[] = [
   apiManager.middleware,
   apiMinistryCategory.middleware,
   apiMinistry.middleware,
+  extentedMinistryApi.middleware,
 ];
 
 export const store = configureStore({

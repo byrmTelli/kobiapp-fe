@@ -1,5 +1,4 @@
 import heroImage from "../../../assets/home-hero-image.jpg";
-import Button from "../../../components/Buttons/Button/Button";
 
 export default function CompanyHero() {
   return (
@@ -13,7 +12,7 @@ export default function CompanyHero() {
           <h1 className="text-gray-200 text-5xl font-bold">Bayram T.</h1>
         </div>
         <div className="h-[50%] flex items-center justify-center">
-          <div className=" h-16 w-1/2 rounded-lg flex items-center justify-center  fade-in">
+          {/*} <div className=" h-16 w-1/2 rounded-lg flex items-center justify-center  fade-in">
             <input
               type="text"
               className="w-full p-2 text-black px-10 bg-gray-200/40 h-full outline-none focus:bg-gray-200/80"
@@ -25,6 +24,7 @@ export default function CompanyHero() {
               size="lg"
             />
           </div>
+          */}
         </div>
         <div className="w-full h-[30%] bg-black/50 grid grid-cols-2   items-center justify-center">
           <div className="flex items-center justify-center text-gray-200">
