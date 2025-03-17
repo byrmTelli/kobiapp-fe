@@ -1,6 +1,12 @@
 import { kobiApi as api } from "../kobiApi";
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
+    getApiHomeGetMinistryCategoryListData: build.query<
+      GetApiHomeGetMinistryCategoryListDataApiResponse,
+      GetApiHomeGetMinistryCategoryListDataApiArg
+    >({
+      query: () => ({ url: `/api/Home/GetMinistryCategoryListData` }),
+    }),
     getApiMinistryCategoryGetAllCategories: build.query<
       GetApiMinistryCategoryGetAllCategoriesApiResponse,
       GetApiMinistryCategoryGetAllCategoriesApiArg
@@ -52,6 +58,9 @@ const injectedRtkApi = api.injectEndpoints({
   overrideExisting: false,
 });
 export { injectedRtkApi as generatedMinistryCategory };
+export type GetApiHomeGetMinistryCategoryListDataApiResponse =
+  /** status 200 OK */ MinistryCategoryViewModelListIApiDataResponse;
+export type GetApiHomeGetMinistryCategoryListDataApiArg = void;
 export type GetApiMinistryCategoryGetAllCategoriesApiResponse =
   /** status 200 OK */ MinistryCategoryViewModelListIApiDataResponse;
 export type GetApiMinistryCategoryGetAllCategoriesApiArg = void;

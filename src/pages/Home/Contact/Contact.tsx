@@ -6,7 +6,7 @@ export default function AboutUsPage({ title }: PageSectionProps) {
   return (
     <div
       id="contactSection"
-      className="flex flex-col items-center w-full min-h-screen text-gray-700 dark:text-gray-200 py-10"
+      className="flex flex-col items-center w-full min-h-screen text-gray-700 dark:text-gray-200 py-10 fade-in"
     >
       <h1 className="text-4xl font-bold">{title}</h1>
       <div className="w-5/6 mt-10">

@@ -1,35 +1,56 @@
-import { IoMdArrowDropright } from "react-icons/io";
 import SidemenuItem from "./SidemenuItem/SidemenuItem";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
+import classNames from "classnames";
+import { IoBagRemove } from "react-icons/io5";
+import { FaUsersBetweenLines } from "react-icons/fa6";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { BiCategory } from "react-icons/bi";
+import { FaEnvelopesBulk } from "react-icons/fa6";
 
 export default function Sidemenu() {
+  const sideMenuState = useSelector(
+    (state: RootState) => state.app.sideMenuOpen
+  );
   return (
-    <div className="fixed w-72 h-full bg-gray-100 dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700">
-      <div className="h-full w-full flex flex-col gap-2">
+    <div
+      className={classNames(
+        { "w-72": sideMenuState },
+        { "w-24": !sideMenuState },
+        "fixed h-full bg-gray-100 dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700 transition-all duration-300"
+      )}
+    >
+      <div className="h-full w-full flex flex-col gap-2 mt-10">
         <SidemenuItem
           path="management"
-          icon={<IoMdArrowDropright />}
+          icon={<LuLayoutDashboard className="text-2xl" />}
           label="Dashboard"
+          isSideMenuOpen={sideMenuState}
         />
         <SidemenuItem
           path="users"
-          icon={<IoMdArrowDropright />}
+          icon={<FaUsersBetweenLines className="text-2xl" />}
           label="Kullanıcı Yönetimi"
+          isSideMenuOpen={sideMenuState}
         />
         <SidemenuItem
           path="ministries"
-          icon={<IoMdArrowDropright />}
+          icon={<IoBagRemove className="text-2xl" />}
           label="Hizmetler"
+          isSideMenuOpen={sideMenuState}
         />
 
         <SidemenuItem
           path="categories"
-          icon={<IoMdArrowDropright />}
+          icon={<BiCategory className="text-2xl" />}
           label="Kategoriler"
+          isSideMenuOpen={sideMenuState}
         />
         <SidemenuItem
           path="messages"
-          icon={<IoMdArrowDropright />}
+          icon={<FaEnvelopesBulk className="text-2xl" />}
           label="Mesajlar"
+          isSideMenuOpen={sideMenuState}
         />
       </div>
     </div>

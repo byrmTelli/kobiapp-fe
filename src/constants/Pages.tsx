@@ -9,6 +9,7 @@ import UsersPanel from "../pages/AdminPanel/UsersPanel/UsersPanel";
 import MinistriesPanelPage from "../pages/AdminPanel/MinistriesPanel/MinistriesPanelPage";
 import CategoriesPanelPage from "../pages/AdminPanel/CategoriesPanel/CategoriesPanelPage";
 import MessagesPage from "../pages/AdminPanel/MessagesPanel/MessagesPage";
+import MinistryDetailPage from "../pages/AdminPanel/MinistriesPanel/MinistryDetailPage/MinistryDetailPage";
 
 export const pages: Page[] = [
   {
@@ -49,6 +50,13 @@ export const pages: Page[] = [
         path: "ministries",
         breadCrumb: "Hizmetler",
         element: <MinistriesPanelPage />,
+        isProtected: true,
+      },
+      {
+        title: "Hizmetler Paneli > Hizmet Detayı",
+        path: "ministries-detail/:id",
+        breadCrumb: "Hizmetler",
+        element: <MinistryDetailPage />,
         isProtected: true,
       },
       {

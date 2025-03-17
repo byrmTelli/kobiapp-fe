@@ -69,6 +69,7 @@ export default function LoginPage() {
               placeholder="Username"
               {...field}
               autoComplete="off"
+              tabIndex={1}
             />
           )}
         />
@@ -81,11 +82,17 @@ export default function LoginPage() {
               placeholder="Password"
               type="password"
               {...field}
+              tabIndex={2}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleLoginButtonClick();
+                }
+              }}
             />
           )}
         />
         <div className="grid grid-cols-2">
-          <div className="flex items-center justify-end px-4">
+          <div className="flex items-center px-4">
             <ThemeToggleButton />
           </div>
           <Button
@@ -93,6 +100,7 @@ export default function LoginPage() {
             title="Login"
             varient="amber"
             className="font-bold rounded-lg"
+            tabIndex={3}
           />
         </div>
       </div>

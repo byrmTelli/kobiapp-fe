@@ -15,5 +15,8 @@ export const apiMinistry = generatedMinistry.enhanceEndpoints({
     postApiMinistryUpdateMinistry: {
       invalidatesTags: ["GetAllMinistries", "GetMinistryById"],
     },
+    postApiMinistryUploadImagesToMinistry: {
+      invalidatesTags: ["GetMinistryById"],
+    },
   },
 });

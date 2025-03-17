@@ -1,6 +1,38 @@
 import { kobiApi as api } from "../kobiApi";
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
+    getApiHomeGetMinistryCategoryListData: build.query<
+      GetApiHomeGetMinistryCategoryListDataApiResponse,
+      GetApiHomeGetMinistryCategoryListDataApiArg
+    >({
+      query: () => ({ url: `/api/Home/GetMinistryCategoryListData` }),
+    }),
+    getApiHomeGetMinistryListData: build.query<
+      GetApiHomeGetMinistryListDataApiResponse,
+      GetApiHomeGetMinistryListDataApiArg
+    >({
+      query: () => ({ url: `/api/Home/GetMinistryListData` }),
+    }),
+    postApiMinistrySetCoverImageOfMinistry: build.mutation<
+      PostApiMinistrySetCoverImageOfMinistryApiResponse,
+      PostApiMinistrySetCoverImageOfMinistryApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/api/Ministry/SetCoverImageOfMinistry`,
+        method: "POST",
+        body: queryArg.setMinistryCoverImageRequestModel,
+      }),
+    }),
+    postApiMinistryUploadImagesToMinistry: build.mutation<
+      PostApiMinistryUploadImagesToMinistryApiResponse,
+      PostApiMinistryUploadImagesToMinistryApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/api/Ministry/UploadImagesToMinistry`,
+        method: "POST",
+        body: queryArg.body,
+      }),
+    }),
     getApiMinistryGetAllMinistries: build.query<
       GetApiMinistryGetAllMinistriesApiResponse,
       GetApiMinistryGetAllMinistriesApiArg
@@ -99,6 +131,25 @@ const injectedRtkApi = api.injectEndpoints({
   overrideExisting: false,
 });
 export { injectedRtkApi as generatedMinistry };
+export type GetApiHomeGetMinistryCategoryListDataApiResponse =
+  /** status 200 OK */ MinistryCategoryViewModelListIApiDataResponse;
+export type GetApiHomeGetMinistryCategoryListDataApiArg = void;
+export type GetApiHomeGetMinistryListDataApiResponse =
+  /** status 200 OK */ MinistryViewModelForHomePageListIApiDataResponse;
+export type GetApiHomeGetMinistryListDataApiArg = void;
+export type PostApiMinistrySetCoverImageOfMinistryApiResponse =
+  /** status 200 OK */ IApiResponse;
+export type PostApiMinistrySetCoverImageOfMinistryApiArg = {
+  setMinistryCoverImageRequestModel: SetMinistryCoverImageRequestModel;
+};
+export type PostApiMinistryUploadImagesToMinistryApiResponse =
+  /** status 200 OK */ IApiResponse;
+export type PostApiMinistryUploadImagesToMinistryApiArg = {
+  body: {
+    MinistryId?: number;
+    Images?: Blob[];
+  };
+};
 export type GetApiMinistryGetAllMinistriesApiResponse =
   /** status 200 OK */ MinistryViewModelListIApiDataResponse;
 export type GetApiMinistryGetAllMinistriesApiArg = void;
@@ -149,11 +200,46 @@ export type MinistryCategoryViewModel = {
   id?: number;
   name?: string | null;
 };
+export type MinistryCategoryViewModelListIApiDataResponse = {
+  success?: boolean;
+  statusCode?: number;
+  message?: string | null;
+  data?: MinistryCategoryViewModel[] | null;
+};
+export type MinistryImageViewModel = {
+  id?: number;
+  path?: string | null;
+};
+export type MinistryViewModelForHomePage = {
+  id?: number;
+  created_At?: string;
+  title?: string | null;
+  description?: string | null;
+  coverImage?: MinistryImageViewModel;
+  category?: MinistryCategoryViewModel;
+};
+export type MinistryViewModelForHomePageListIApiDataResponse = {
+  success?: boolean;
+  statusCode?: number;
+  message?: string | null;
+  data?: MinistryViewModelForHomePage[] | null;
+};
+export type IApiResponse = {
+  success?: boolean;
+  statusCode?: number;
+  message?: string | null;
+};
+export type SetMinistryCoverImageRequestModel = {
+  ministryId?: number;
+  imageId?: number;
+};
 export type MinistryViewModel = {
   id?: number;
   created_At?: string;
   title?: string | null;
   description?: string | null;
+  coverImage?: MinistryImageViewModel;
+  images?: MinistryImageViewModel[] | null;
   category?: MinistryCategoryViewModel;
 };
 export type MinistryViewModelListIApiDataResponse = {
@@ -161,11 +247,6 @@ export type MinistryViewModelListIApiDataResponse = {
   statusCode?: number;
   message?: string | null;
   data?: MinistryViewModel[] | null;
-};
-export type IApiResponse = {
-  success?: boolean;
-  statusCode?: number;
-  message?: string | null;
 };
 export type CreateMinistryRequestModel = {
   title?: string | null;
@@ -187,12 +268,6 @@ export type MinistryViewModelIApiDataResponse = {
 export type DeleteEntityRequestlModel = {
   id?: number;
   hardDelete?: boolean;
-};
-export type MinistryCategoryViewModelListIApiDataResponse = {
-  success?: boolean;
-  statusCode?: number;
-  message?: string | null;
-  data?: MinistryCategoryViewModel[] | null;
 };
 export type CreateMinistryCategoryRequestModel = {
   name?: string | null;

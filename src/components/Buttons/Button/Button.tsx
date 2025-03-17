@@ -17,7 +17,7 @@ export default function Button({
   return (
     <button
       disabled={isLoading ? true : false}
-      className={`px-3 py-1 select-none group font-semibold flex items-center justify-center transition-color duration-500 rounded-md ${className} ${currentVarient} ${currentSize}`}
+      className={`px-3 py-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 select-none group font-semibold flex items-center justify-center transition-color duration-500 rounded-md ${className} ${currentVarient} ${currentSize}`}
       type={type}
       {...props}
     >

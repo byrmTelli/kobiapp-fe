@@ -7,9 +7,11 @@ import AddNewMinistryModal from "./AddNewMinistryModal/AddNewMinistryModal";
 import InspectMinistryModal from "./InspectMinistryModal/InspectMinistryModal";
 import { MinistryViewModel } from "../../../store/api/generated/generatedApiMinistry";
 import UpdateMinistryModal from "./UpdateMinistryModal/UpdateMinistryModal";
+import { useNavigate } from "react-router-dom";
 
 export default function MinistriesPanelPage() {
   // States
+  const navigate = useNavigate();
   const [isAddMinistryModalOpen, setIsAddMinistryModalOpen] =
     useState<boolean>(false);
   const [isInspectMinistryModalOpen, setIsInspectMinistryModalOpen] =
@@ -85,8 +87,9 @@ export default function MinistriesPanelPage() {
                 <div className="flex items-center gap-2">
                   <Button
                     onClick={() => {
-                      setSelectedMinistry(cell.row.original);
-                      setIsInspectMinistryModalOpen(true);
+                      navigate(
+                        `/admin/ministries-detail/${cell.row.original.id}`
+                      );
                     }}
                     title="İncele"
                     varient="amber"
